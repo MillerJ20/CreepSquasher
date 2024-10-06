@@ -3,13 +3,20 @@ extends CharacterBody3D
 # How fast the player moves in meters per second.
 @export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
-@export var fall_acceleration = 75
+@export var fall_acceleration = 65
 
 @export var jump_impulse = 20
-@export var bounce_impulse = 16
+@export var bounce_impulse = 18
 
 var target_velocity = Vector3.ZERO
 var consecutive_bounce = 0;
+
+signal hit
+
+# And this function at the bottom.
+func die():
+	hit.emit()
+	queue_free()
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -27,6 +34,9 @@ func _physics_process(delta):
 		direction = direction.normalized()
 		# Setting the basis property will affect the rotation of the node.
 		$Pivot.basis = Basis.looking_at(direction)
+		$AnimationPlayer.speed_scale = 2.5
+	else:
+		$AnimationPlayer.speed_scale = 1
 	
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
@@ -60,8 +70,13 @@ func _physics_process(delta):
 				# If so, we squash it and bounce.
 				mob.squash()
 				target_velocity.y = bounce_impulse
-				bounce_impulse += 1
+				bounce_impulse += 2
 				# Prevent further duplicate calls.
 				break
+	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse	
 
 	move_and_slide()
+
+
+func _on_mob_detector_body_entered(body: Node3D) -> void:
+	die()
