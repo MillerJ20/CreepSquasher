@@ -41,7 +41,7 @@ _data = {
 }
 
 [node name="Mob" type="CharacterBody3D" groups=["mob"]]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.167852, -0.0173203)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.167852, -0.0173203)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ou661")
