@@ -1,14 +1,11 @@
 extends CharacterBody3D
 
 signal squashed
-
 @export var min_speed = 8
-
 @export var max_speed = 14
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
-	
 
 func initialize(start_position, player_position):
 	# We position the mob by placing it at start_position
