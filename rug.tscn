@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ve26fd5rs04"]
+
+[ext_resource type="PackedScene" uid="uid://dga64k2ki4s1g" path="res://art/meshes/rug.glb" id="1_bq3pn"]
+[ext_resource type="Material" uid="uid://bhrhw21i4gshj" path="res://art/materials/rug_material.tres" id="2_i2ktv"]
+
+[node name="rug" instance=ExtResource("1_bq3pn")]
+
+[node name="Rug" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_i2ktv")

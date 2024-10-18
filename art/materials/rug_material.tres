@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bhrhw21i4gshj"]
+
+[ext_resource type="Shader" path="res://art/materials/rug_material.gdshader" id="1_ol44w"]
+[ext_resource type="Texture2D" uid="uid://tth4kjjce2y1" path="res://art/textures/rug_rug_texture.png" id="2_o164m"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_sm86m"]
+
+[resource]
+render_priority = 0
+next_pass = SubResource("FogMaterial_sm86m")
+shader = ExtResource("1_ol44w")
+shader_parameter/diffuse_color = Color(1, 1, 1, 1)
+shader_parameter/diffuse_texture = ExtResource("2_o164m")
+shader_parameter/normal_strength = 1.0
+shader_parameter/phong = 0.033
+shader_parameter/phong_exponent = 0.25
+shader_parameter/rim_strength = 0.5
+shader_parameter/rim_spread = 6.0

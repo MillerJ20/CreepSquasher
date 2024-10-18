@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dst4tfg3ofot1"]
 
-[ext_resource type="PackedScene" uid="uid://cgg8tm38sihnm" path="res://art/player.glb" id="1_elyud"]
+[ext_resource type="PackedScene" uid="uid://cgg8tm38sihnm" path="res://art/meshes/player.glb" id="1_elyud"]
 [ext_resource type="Script" path="res://player.gd" id="1_n3dwu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yws54"]

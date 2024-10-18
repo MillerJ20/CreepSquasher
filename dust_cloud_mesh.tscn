@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbdjp77qpqi7f"]
+
+[ext_resource type="PackedScene" uid="uid://dy8x2ub1cqk5o" path="res://art/meshes/dust cloud.glb" id="1_rt7op"]
+
+[node name="dust cloud" instance=ExtResource("1_rt7op")]
+
+[node name="Mball_014" parent="." index="3"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.00714588, 4.35752, 0.0518453)

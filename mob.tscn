@@ -1,39 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn3eef0s0n0h1"]
+[gd_scene load_steps=7 format=3 uid="uid://bn3eef0s0n0h1"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_ou661"]
-[ext_resource type="PackedScene" uid="uid://cx6yo3omq1776" path="res://art/mob.glb" id="1_q2blx"]
+[ext_resource type="PackedScene" uid="uid://wmrm5g5crpwj" path="res://dust_cloud.tscn" id="3_1ntuh"]
+[ext_resource type="PackedScene" uid="uid://dy8x2ub1cqk5o" path="res://art/meshes/dust cloud.glb" id="3_4wc3k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mxf8i"]
-size = Vector3(1.77895, 0.768066, 2.07648)
+size = Vector3(3.25609, 1.74548, 2.26887)
 
 [sub_resource type="Animation" id="Animation_q6853"]
 resource_name = "float"
 length = 1.2
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/Character:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.5, 1.2),
-"transitions": PackedFloat32Array(0.420448, 2.73208, 0.933033),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.65, 0), Vector3(0, 0.35, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Pivot/Character:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.5, 0.7, 1.2),
-"transitions": PackedFloat32Array(0.420448, 0.366021, 0.965936, 0.933033),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.139626, 0, 0), Vector3(0.10472, 0, 0), Vector3(-0.15708, 0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bt5qy"]
 _data = {
@@ -41,7 +18,7 @@ _data = {
 }
 
 [node name="Mob" type="CharacterBody3D" groups=["mob"]]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.167852, -0.0173203)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -2, 0)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ou661")
@@ -49,14 +26,17 @@ script = ExtResource("1_ou661")
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.371237, 0)
 
-[node name="Character" parent="Pivot" instance=ExtResource("1_q2blx")]
-transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 0.35, 0)
+[node name="dust cloud" parent="Pivot" instance=ExtResource("3_4wc3k")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, 0, -1.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.998862, 0, -3.05474e-07, 0, 0.998864, 0, 3.05474e-07, 0, 0.998862, 0.0347737, -0.00735164, 0.013325)
+visible = false
 shape = SubResource("BoxShape3D_mxf8i")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168412, 0.468722, -0.0892701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168412, 0.866293, -0.380126)
+visible = false
 aabb = AABB(-1, -1, -1.14609, 2, 2, 2.82344)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -64,5 +44,9 @@ libraries = {
 "": SubResource("AnimationLibrary_bt5qy")
 }
 autoplay = "float"
+
+[node name="Node3D" parent="." instance=ExtResource("3_1ntuh")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -0.0647406, -0.738225, -0.588811)
+visible = false
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

@@ -1,9 +1,9 @@
-res://player.tscn
-res://player.gd
-res://main.tscn
 res://mob.tscn
+res://art/materials/rug_material.gdshader
+res://art/materials/rug_material.tres
+res://main.tscn
+res://player.tscn
 res://music_player.tscn
-res://global_score.gd
-res://score_label.gd
-res://main.gd
-res://mob.gd
+res://rug.tscn
+res://dust_cloud.tscn
+res://dust_cloud_mesh.tscn
