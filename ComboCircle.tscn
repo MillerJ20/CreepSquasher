@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://brsw116qembhx"]
+
+[ext_resource type="Texture2D" uid="uid://b0oe8ovhjq4uq" path="res://imresizer-1729315528787.png" id="1_bci1r"]
+[ext_resource type="Texture2D" uid="uid://dsnmb620vgpk1" path="res://imresizer-1729314189803.png" id="2_ubvpe"]
+[ext_resource type="Script" path="res://combo_timer.gd" id="3_d5r8q"]
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 1500.0
+step = -100.0
+value = 1500.0
+texture_under = ExtResource("1_bci1r")
+texture_progress = ExtResource("2_ubvpe")
+script = ExtResource("3_d5r8q")
+
+[node name="ComboTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]
